@@ -224,6 +224,29 @@ Backend URL:
 
 - Use MongoDB Atlas for cloud deployment
 
+## Vercel Full-Stack Deployment
+
+This repository now includes:
+
+- a root workspace `package.json`
+- a Vercel serverless API entry at `api/[...path].js`
+- a `vercel.json` build configuration
+
+This allows the React frontend and Express API to deploy under one Vercel project.
+
+Recommended Vercel environment variables:
+
+- `MONGO_URI`
+- `JWT_SECRET`
+- `JWT_EXPIRES_IN=7d`
+- `CLIENT_URL=https://your-vercel-domain.vercel.app`
+- `AUTO_SEED=true` for first demo deployment, or `false` for manual seeding
+
+Important:
+
+- The frontend now defaults to `/api` in production, so the same Vercel domain can serve both UI and API.
+- For a real live deployment, use MongoDB Atlas instead of local MongoDB.
+
 ## Submission Highlights
 
 - Professional dashboard UI with responsive sidebar and top navbar
@@ -234,4 +257,3 @@ Backend URL:
 - Seed data for instant demo
 - PDF export for presentation impact
 - Dark mode for polished UX
-
