@@ -54,7 +54,7 @@ const LoginPage = () => {
           <div className="flex items-start justify-between gap-4">
             <div>
               <div className="inline-flex rounded-3xl bg-slate-900 px-4 py-2 text-xs font-bold uppercase tracking-[0.26em] text-white dark:bg-white dark:text-slate-900">
-                Final Year Demo
+                DEENA ABINAYA AMURUTHAA PROJECT
               </div>
               <h1 className="mt-6 max-w-2xl font-display text-4xl font-bold leading-tight text-slate-900 dark:text-white md:text-5xl">
                 AI-Based Student Behaviour Analysis and Performance Monitoring System
