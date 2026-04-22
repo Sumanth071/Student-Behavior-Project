@@ -96,7 +96,10 @@ SMS/
 Create local environment files from the examples:
 
 - Copy `server/.env.example` to `server/.env`
-- Copy `client/.env.example` to `client/.env`
+- For the frontend, Vite now uses mode-specific files:
+- `client/.env.development` for local development
+- `client/.env.production` for production builds
+- Use `client/.env.example` only as a reference if you want a custom local override
 
 ### 2. Install Dependencies
 
@@ -213,7 +216,8 @@ Backend URL:
 ### Frontend
 
 - Deploy the `client` folder to Vercel or Netlify
-- Set `VITE_API_URL` to the deployed backend API URL
+- For split frontend/backend hosting, set `VITE_API_URL` to the deployed backend API URL
+- For the included full-stack Vercel setup, keep production on `/api`
 
 ### Backend
 
@@ -245,6 +249,7 @@ Recommended Vercel environment variables:
 Important:
 
 - The frontend now defaults to `/api` in production, so the same Vercel domain can serve both UI and API.
+- Local development uses `http://localhost:5000/api` through `client/.env.development`.
 - For a real live deployment, use MongoDB Atlas instead of local MongoDB.
 - The UI now behaves more realistically by role: Admin and Teacher have CRUD access, while Student and Parent see filtered read-only portal views.
 
