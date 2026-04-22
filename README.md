@@ -238,7 +238,7 @@ Recommended Vercel environment variables:
 
 - `MONGO_URI`
 - `JWT_SECRET`
-- `JWT_EXPIRES_IN=7d`
+- `JWT_EXPIRES_IN=30d`
 - `CLIENT_URL=https://your-vercel-domain.vercel.app`
 - `AUTO_SEED=true` for first demo deployment, or `false` for manual seeding
 
@@ -246,6 +246,7 @@ Important:
 
 - The frontend now defaults to `/api` in production, so the same Vercel domain can serve both UI and API.
 - For a real live deployment, use MongoDB Atlas instead of local MongoDB.
+- The UI now behaves more realistically by role: Admin and Teacher have CRUD access, while Student and Parent see filtered read-only portal views.
 
 ## Submission Highlights
 

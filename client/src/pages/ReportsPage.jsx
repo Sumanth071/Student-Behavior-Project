@@ -6,6 +6,7 @@ import PerformanceBarChart from "../components/charts/PerformanceBarChart.jsx";
 import RiskDistributionChart from "../components/charts/RiskDistributionChart.jsx";
 import FormField from "../components/common/FormField.jsx";
 import Panel from "../components/common/Panel.jsx";
+import RoleNotice from "../components/common/RoleNotice.jsx";
 import StatCard from "../components/common/StatCard.jsx";
 import StatusBadge from "../components/common/StatusBadge.jsx";
 import { useAuth } from "../hooks/useAuth.js";
@@ -72,6 +73,8 @@ const ReportsPage = () => {
 
   return (
     <div className="space-y-6">
+      <RoleNotice subject="reports and analytics" />
+
       {error ? (
         <div className="card-surface border border-rose-200 px-5 py-4 text-sm font-semibold text-rose-500 dark:border-rose-500/20 dark:text-rose-300">
           {error}

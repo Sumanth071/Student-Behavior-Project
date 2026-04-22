@@ -1,28 +1,11 @@
-import {
-  BarChart3,
-  BellRing,
-  BookCheck,
-  BrainCircuit,
-  GraduationCap,
-  LayoutDashboard,
-  Users,
-  X,
-} from "lucide-react";
+import { X } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth.js";
-
-const navigation = [
-  { to: "/", label: "Dashboard", icon: LayoutDashboard },
-  { to: "/students", label: "Students", icon: Users },
-  { to: "/attendance", label: "Attendance", icon: BookCheck },
-  { to: "/marks", label: "Marks", icon: GraduationCap },
-  { to: "/behaviour", label: "Behaviour", icon: BrainCircuit },
-  { to: "/reports", label: "Reports", icon: BarChart3 },
-  { to: "/notifications", label: "Notifications", icon: BellRing },
-];
+import { getNavigationForRole } from "../../utils/roles.js";
 
 const Sidebar = ({ open, onClose, notificationCount }) => {
   const { user } = useAuth();
+  const navigation = getNavigationForRole(user?.role);
 
   return (
     <>
@@ -89,7 +72,7 @@ const Sidebar = ({ open, onClose, notificationCount }) => {
                 <Icon size={18} />
                 {label}
               </span>
-              {label === "Notifications" && notificationCount ? (
+              {to === "/notifications" && notificationCount ? (
                 <span className="rounded-full bg-rose-500 px-2 py-1 text-[10px] font-bold text-white">
                   {notificationCount}
                 </span>

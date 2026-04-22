@@ -2,43 +2,13 @@ import { Bell, LogOut, Menu, MoonStar, SunMedium } from "lucide-react";
 import { useLocation } from "react-router-dom";
 import { useAuth } from "../../hooks/useAuth.js";
 import { useTheme } from "../../hooks/useTheme.js";
-
-const pageTitles = {
-  "/": {
-    title: "AI Behaviour Dashboard",
-    description: "Monitor behaviour score, risk trends, and academic health in one place.",
-  },
-  "/students": {
-    title: "Student Management",
-    description: "Manage student profiles, sections, and behaviour insights.",
-  },
-  "/attendance": {
-    title: "Attendance Management",
-    description: "Track attendance patterns that influence behavioural risk.",
-  },
-  "/marks": {
-    title: "Marks Management",
-    description: "Record academic performance and compare subject-level progress.",
-  },
-  "/behaviour": {
-    title: "Behaviour Tracking",
-    description: "Review participation, discipline, and assignment behaviour logs.",
-  },
-  "/reports": {
-    title: "Reports and Analytics",
-    description: "Export professional student reports and presentation-ready analytics.",
-  },
-  "/notifications": {
-    title: "Notifications and Alerts",
-    description: "Surface urgent student updates and targeted dashboard alerts.",
-  },
-};
+import { getPageCopyForRole, isManagerRole } from "../../utils/roles.js";
 
 const Topbar = ({ onMenuClick, notificationCount }) => {
   const { pathname } = useLocation();
   const { user, logout } = useAuth();
   const { theme, toggleTheme } = useTheme();
-  const currentPage = pageTitles[pathname] || pageTitles["/"];
+  const currentPage = getPageCopyForRole(pathname, user?.role);
 
   return (
     <header className="mb-6 flex flex-col gap-4 rounded-[28px] border border-white/70 bg-white/80 px-5 py-4 shadow-soft backdrop-blur-xl dark:border-slate-800/80 dark:bg-slate-900/80 md:flex-row md:items-center md:justify-between">
@@ -52,7 +22,9 @@ const Topbar = ({ onMenuClick, notificationCount }) => {
         </button>
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-brand-600 dark:text-brand-300">
-            AI-Based Student Behaviour Analysis and Performance Monitoring System
+            {isManagerRole(user?.role)
+              ? "AI-Based Student Behaviour Analysis and Performance Monitoring System"
+              : "Role-based student monitoring portal"}
           </p>
           <h2 className="mt-1 font-display text-2xl font-bold text-slate-900 dark:text-white">
             {currentPage.title}

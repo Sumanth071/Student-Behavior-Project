@@ -4,6 +4,7 @@ import apiClient from "../api/apiClient.js";
 import FormField from "../components/common/FormField.jsx";
 import Modal from "../components/common/Modal.jsx";
 import Panel from "../components/common/Panel.jsx";
+import RoleNotice from "../components/common/RoleNotice.jsx";
 import StatCard from "../components/common/StatCard.jsx";
 import StatusBadge from "../components/common/StatusBadge.jsx";
 import Table from "../components/common/Table.jsx";
@@ -210,6 +211,8 @@ const NotificationsPage = () => {
 
   return (
     <div className="space-y-6">
+      <RoleNotice subject="notifications and alerts" />
+
       <div className="grid gap-4 md:grid-cols-3">
         <StatCard
           label="Notification Count"
